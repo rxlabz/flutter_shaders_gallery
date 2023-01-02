@@ -1,0 +1,33 @@
+name: shaders_lab
+description: shaders studies
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0-21.0.dev <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_shaders:
+    path: /Users/rxlabz/dev/labz/flutter/fork/flutter_shaders-main
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+  shaders:
+    - shaders/lines.frag
+    - shaders/gradient.frag
+    - shaders/gradient_h.frag
+    - shaders/invert.frag
+    - shaders/pixelate.frag
+    - shaders/pixelate_avg.frag
+    - shaders/pointillism.frag
