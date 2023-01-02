@@ -1,6 +1,7 @@
 # shaders_lab
 
-examples of simple Flutter shaders 
+examples of simple Flutter shaders
+
 
 ⚠️ for now you need to be on Flutter master channel ( or maybe beta IDK... ) and run on mobile or desktop
 
@@ -9,3 +10,7 @@ examples of simple Flutter shaders
 - others flutter shaders examples :
   - https://github.com/wolfenrain/flutter_shaders_example
   - https://github.com/renancaraujo/shaders_playground
+  
+![dashes pointillisme](assets/dashes-pointillism.png)
+
+![dashes pixels](assets/pixl8.png)
