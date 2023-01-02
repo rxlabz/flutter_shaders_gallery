@@ -1,4 +1,4 @@
-# shaders_lab
+# Flutter shader lab
 
 examples of simple Flutter shaders
 
