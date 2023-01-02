@@ -10,8 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_shaders:
-    path: /Users/rxlabz/dev/labz/flutter/fork/flutter_shaders-main
+  flutter_shaders: ^0.0.5
 
 dev_dependencies:
   flutter_test:

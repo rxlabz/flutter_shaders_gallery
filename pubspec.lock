@@ -65,10 +65,11 @@ packages:
   flutter_shaders:
     dependency: "direct main"
     description:
-      path: "/Users/rxlabz/dev/labz/flutter/fork/flutter_shaders-main"
-      relative: false
-    source: path
-    version: "0.0.4"
+      name: flutter_shaders
+      sha256: ed553d3d5322612ec63f93e76cd93eb26a06b7364f769d1282e1a1db2778f73a
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   flutter_test:
     dependency: "direct dev"
     description: flutter
