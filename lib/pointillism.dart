@@ -10,7 +10,7 @@ class PointillismView extends StatefulWidget {
   const PointillismView({super.key});
 
   @override
-  _PointillismViewState createState() => _PointillismViewState();
+  State createState() => _PointillismViewState();
 }
 
 class _PointillismViewState extends State<PointillismView>
@@ -67,7 +67,7 @@ class _PointillismViewState extends State<PointillismView>
                     fit: BoxFit.fitWidth,
                     child: ShaderBuilder(
                       assetKey: 'shaders/pointillism.frag',
-                          (context, shader, child) {
+                      (context, shader, child) {
                         shader
                           ..setFloat(0, image!.width.toDouble())
                           ..setFloat(1, image!.height.toDouble())
@@ -85,6 +85,5 @@ class _PointillismViewState extends State<PointillismView>
               ),
             ],
           );
-    ;
   }
 }

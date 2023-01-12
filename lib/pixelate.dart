@@ -10,7 +10,7 @@ class PixelateView extends StatefulWidget {
   const PixelateView({super.key});
 
   @override
-  _PixelateViewState createState() => _PixelateViewState();
+  State createState() => _PixelateViewState();
 }
 
 class _PixelateViewState extends State<PixelateView>
