@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'invert.dart';
-import 'pixelate.dart';
-import 'pixelate_avg.dart';
-import 'pointillism.dart';
-import 'pointillism_transition.dart';
-import 'simple_shader.dart';
+import 'src/invert.dart';
+import 'src/pixelate.dart';
+import 'src/pixelate_avg.dart';
+import 'src/pointillism.dart';
+import 'src/pointillism_transition.dart';
+import 'src/simple_shader.dart';
 
 void main() {
   runApp(const App());

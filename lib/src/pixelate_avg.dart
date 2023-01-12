@@ -2,8 +2,8 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
-import 'package:shaders_lab/extensions.dart';
 
+import 'extensions.dart';
 import 'shader_painter.dart';
 
 class PixelateAvgView extends StatefulWidget {

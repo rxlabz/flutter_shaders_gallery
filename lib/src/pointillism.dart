@@ -1,22 +1,25 @@
+// ignore_for_file: prefer_relative_imports
+
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
-import 'package:shaders_lab/extensions.dart';
+import 'package:shaders_lab/src/extensions.dart';
 
 import 'shader_painter.dart';
 
-class PixelateView extends StatefulWidget {
-  const PixelateView({super.key});
+class PointillismView extends StatefulWidget {
+  const PointillismView({super.key});
 
   @override
-  State createState() => _PixelateViewState();
+  State createState() => _PointillismViewState();
 }
 
-class _PixelateViewState extends State<PixelateView>
+class _PointillismViewState extends State<PointillismView>
     with SingleTickerProviderStateMixin {
   ui.Image? image;
 
+  double maxCell = 10;
   double numCell = 10;
 
   @override
@@ -42,11 +45,11 @@ class _PixelateViewState extends State<PixelateView>
                 padding: const EdgeInsets.only(right: 108.0),
                 child: Row(
                   children: [
-                    Flexible(
+                    Expanded(
                       child: Slider(
                         value: numCell,
                         min: 1,
-                        max: 256,
+                        max: 128,
                         divisions: 100,
                         onChanged: (value) => setState(
                           () => numCell = value.roundToDouble(),
@@ -65,7 +68,7 @@ class _PixelateViewState extends State<PixelateView>
                     alignment: Alignment.center,
                     fit: BoxFit.fitWidth,
                     child: ShaderBuilder(
-                      assetKey: 'shaders/pixelate.frag',
+                      assetKey: 'shaders/pointillism.frag',
                       (context, shader, child) {
                         shader
                           ..setFloat(0, image!.width.toDouble())
