@@ -3,10 +3,8 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_shaders/flutter_shaders.dart';
-import 'package:shaders_lab/src/extensions.dart';
 
-import 'shader_painter.dart';
+import 'extensions.dart';
 
 class PointillismView extends StatefulWidget {
   const PointillismView({super.key});
@@ -19,7 +17,6 @@ class _PointillismViewState extends State<PointillismView>
     with SingleTickerProviderStateMixin {
   ui.Image? image;
 
-  double maxCell = 10;
   double numCell = 10;
 
   @override
@@ -36,56 +33,45 @@ class _PointillismViewState extends State<PointillismView>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return image == null
-        ? const Center(child: CircularProgressIndicator())
-        : Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 108.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Slider(
-                        value: numCell,
-                        min: 1,
-                        max: 128,
-                        divisions: 100,
-                        onChanged: (value) => setState(
-                          () => numCell = value.roundToDouble(),
-                        ),
+  Widget build(BuildContext context) => handleNullImage(
+        image,
+        (image) => Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 108.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Slider(
+                      value: numCell,
+                      min: 1,
+                      max: 128,
+                      divisions: 100,
+                      onChanged: (value) => setState(
+                        () => numCell = value.roundToDouble(),
                       ),
                     ),
-                    Text("$numCell"),
-                  ],
-                ),
+                  ),
+                  Text("$numCell"),
+                ],
               ),
-              Expanded(
-                child: SizedBox(
-                  width: image!.width.toDouble(),
-                  height: image!.height.toDouble(),
-                  child: FittedBox(
-                    alignment: Alignment.center,
-                    fit: BoxFit.fitWidth,
-                    child: ShaderBuilder(
-                      assetKey: 'shaders/pointillism.frag',
-                      (context, shader, child) {
-                        shader
-                          ..setFloat(0, image!.width.toDouble())
-                          ..setFloat(1, image!.height.toDouble())
-                          ..setFloat(2, numCell)
-                          ..setImageSampler(0, image!);
-
-                        return CustomPaint(
-                          size: image!.size,
-                          painter: ShaderPainter(shader),
-                        );
-                      },
-                    ),
+            ),
+            Expanded(
+              child: SizedBox(
+                width: image.width.toDouble(),
+                height: image.height.toDouble(),
+                child: FittedBox(
+                  alignment: Alignment.center,
+                  fit: BoxFit.fitWidth,
+                  child: pixelateBuilder(
+                    shaderKey: 'shaders/pointillism.frag',
+                    image: image,
+                    numCell: numCell,
                   ),
                 ),
               ),
-            ],
-          );
-  }
+            ),
+          ],
+        ),
+      );
 }

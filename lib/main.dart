@@ -38,8 +38,7 @@ enum ShaderType {
   pixelateAvg(PixelateAvgView()),
   animatedPixelate(AnimatedShaderView('shaders/pixelate_avg.frag')),
   pointillism(PointillismView()),
-  animatedPointillism(AnimatedShaderView('shaders/pointillism.frag')),
-  ;
+  animatedPointillism(AnimatedShaderView('shaders/pointillism.frag'));
 
   final Widget view;
   const ShaderType(this.view);
