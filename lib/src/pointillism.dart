@@ -1,8 +1,10 @@
+// ignore_for_file: prefer_relative_imports
+
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
-import 'package:shaders_lab/extensions.dart';
+import 'package:shaders_lab/src/extensions.dart';
 
 import 'shader_painter.dart';
 
@@ -10,7 +12,7 @@ class PointillismView extends StatefulWidget {
   const PointillismView({super.key});
 
   @override
-  _PointillismViewState createState() => _PointillismViewState();
+  State createState() => _PointillismViewState();
 }
 
 class _PointillismViewState extends State<PointillismView>
@@ -67,7 +69,7 @@ class _PointillismViewState extends State<PointillismView>
                     fit: BoxFit.fitWidth,
                     child: ShaderBuilder(
                       assetKey: 'shaders/pointillism.frag',
-                          (context, shader, child) {
+                      (context, shader, child) {
                         shader
                           ..setFloat(0, image!.width.toDouble())
                           ..setFloat(1, image!.height.toDouble())
@@ -85,6 +87,5 @@ class _PointillismViewState extends State<PointillismView>
               ),
             ],
           );
-    ;
   }
 }

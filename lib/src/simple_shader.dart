@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
-import 'package:shaders_lab/shader_painter.dart';
+
+import 'shader_painter.dart';
 
 class SimpleShaderView extends StatelessWidget {
   final String assetKey;

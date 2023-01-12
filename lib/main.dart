@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'invert.dart';
-import 'pixelate.dart';
-import 'pixelate_avg.dart';
-import 'pointillism.dart';
-import 'pointillism_transition.dart';
-import 'simple_shader.dart';
+import 'src/invert.dart';
+import 'src/pixelate.dart';
+import 'src/pixelate_avg.dart';
+import 'src/pointillism.dart';
+import 'src/pointillism_transition.dart';
+import 'src/simple_shader.dart';
 
 void main() {
   runApp(const App());
@@ -24,7 +24,7 @@ class App extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: MainScreen(),
+        home: const MainScreen(),
         debugShowCheckedModeBanner: false,
       );
 }
@@ -45,42 +45,41 @@ enum ShaderType {
   const ShaderType(this.view);
 }
 
-class MainScreen extends StatelessWidget {
-  ValueNotifier<ShaderType> selection = ValueNotifier(ShaderType.values.first);
+final ValueNotifier<ShaderType> _selection =
+    ValueNotifier(ShaderType.values.first);
 
-  MainScreen({Key? key}) : super(key: key);
+class MainScreen extends StatelessWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       endDrawer: Drawer(
-        child: Builder(
-          builder: (context) {
-            return ListView(
-              children: [
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Shaders', style: textTheme.titleLarge),
-                  ),
+        child: Builder(builder: (context) {
+          return ListView(
+            children: [
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Shaders', style: textTheme.titleLarge),
                 ),
-                ...ShaderType.values.map(
-                  (e) => TextButton(
-                    onPressed: () {
-                      selection.value = e;
-                      Scaffold.of(context).closeEndDrawer();
-                    },
-                    child: Text(e.name),
-                  ),
-                )
-              ],
-            );
-          }
-        ),
+              ),
+              ...ShaderType.values.map(
+                (e) => TextButton(
+                  onPressed: () {
+                    _selection.value = e;
+                    Scaffold.of(context).closeEndDrawer();
+                  },
+                  child: Text(e.name),
+                ),
+              )
+            ],
+          );
+        }),
       ),
       body: ValueListenableBuilder(
-        valueListenable: selection,
+        valueListenable: _selection,
         builder: (context, value, _) => ShaderView(value),
       ),
     );

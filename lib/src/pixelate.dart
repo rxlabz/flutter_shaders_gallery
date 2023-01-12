@@ -2,15 +2,15 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
-import 'package:shaders_lab/extensions.dart';
 
+import 'extensions.dart';
 import 'shader_painter.dart';
 
 class PixelateView extends StatefulWidget {
   const PixelateView({super.key});
 
   @override
-  _PixelateViewState createState() => _PixelateViewState();
+  State createState() => _PixelateViewState();
 }
 
 class _PixelateViewState extends State<PixelateView>

@@ -20,7 +20,7 @@ class AnimatedShaderView extends StatefulWidget {
   const AnimatedShaderView(this.shaderKey, {super.key});
 
   @override
-  _AnimatedShaderViewState createState() => _AnimatedShaderViewState();
+  State createState() => _AnimatedShaderViewState();
 }
 
 class _AnimatedShaderViewState extends State<AnimatedShaderView>

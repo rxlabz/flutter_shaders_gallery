@@ -2,17 +2,15 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
-import 'package:shaders_lab/extensions.dart';
 
+import 'extensions.dart';
 import 'shader_painter.dart';
-
-const SHADER = 'shaders/pixelate_avg.frag';
 
 class PixelateAvgView extends StatefulWidget {
   const PixelateAvgView({super.key});
 
   @override
-  _PixelateAvgViewState createState() => _PixelateAvgViewState();
+  State createState() => _PixelateAvgViewState();
 }
 
 class _PixelateAvgViewState extends State<PixelateAvgView>
@@ -89,7 +87,7 @@ class _PixelateAvgViewState extends State<PixelateAvgView>
                           fit: BoxFit.fitWidth,
                           child: ShaderBuilder(
                             assetKey: 'shaders/pixelate_avg.frag',
-                                (context, shader, child) {
+                            (context, shader, child) {
                               shader
                                 ..setFloat(0, image!.width.toDouble())
                                 ..setFloat(1, image!.height.toDouble())
