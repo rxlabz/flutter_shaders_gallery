@@ -1,11 +1,8 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_shaders/flutter_shaders.dart';
 
-import 'shader_painter.dart';
-
-//const SHADER = 'shaders/pointillism.frag';
+import 'extensions.dart';
 
 const images = [
   'assets/dash0.png',
@@ -92,42 +89,30 @@ class _AnimatedShaderViewState extends State<AnimatedShaderView>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return image == null
-        ? const Center(child: CircularProgressIndicator())
-        : AnimatedBuilder(
-            animation: curved,
-            builder: (context, _) {
-              double numCell = anim.value.roundToDouble();
-              return Center(
-                child: SizedBox(
-                  width: image!.width.toDouble(),
-                  height: image!.height.toDouble(),
-                  child: RepaintBoundary(
-                    child: FittedBox(
-                      alignment: Alignment.center,
-                      fit: BoxFit.contain,
-                      child: ShaderBuilder(
-                        assetKey: widget.shaderKey,
-                        (context, shader, child) {
-                          shader
-                            ..setFloat(0, image!.width.toDouble())
-                            ..setFloat(1, image!.height.toDouble())
-                            ..setFloat(2, numCell)
-                            ..setImageSampler(0, image!);
-
-                          return CustomPaint(
-                            size: Size(image!.width.toDouble(),
-                                image!.height.toDouble()),
-                            painter: ShaderPainter(shader),
-                          );
-                        },
-                      ),
+  Widget build(BuildContext context) => handleNullImage(
+        image,
+        (image) => AnimatedBuilder(
+          animation: curved,
+          builder: (context, _) {
+            double numCell = anim.value.roundToDouble();
+            return Center(
+              child: SizedBox(
+                width: image.width.toDouble(),
+                height: image.height.toDouble(),
+                child: RepaintBoundary(
+                  child: FittedBox(
+                    alignment: Alignment.center,
+                    fit: BoxFit.contain,
+                    child: pixelateBuilder(
+                      shaderKey: widget.shaderKey,
+                      image: image,
+                      numCell: numCell,
                     ),
                   ),
                 ),
-              );
-            },
-          );
-  }
+              ),
+            );
+          },
+        ),
+      );
 }

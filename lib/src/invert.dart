@@ -30,12 +30,12 @@ class _InvertViewState extends State<InvertView> {
   }
 
   @override
-  Widget build(BuildContext context) => image == null
-      ? const Center(child: CircularProgressIndicator())
-      : Center(
+  Widget build(BuildContext context) => handleNullImage(
+        image,
+        (image) => Center(
           child: SizedBox(
-            width: image!.width.toDouble(),
-            height: image!.height.toDouble(),
+            width: image.width.toDouble(),
+            height: image.height.toDouble(),
             child: FittedBox(
               alignment: Alignment.center,
               fit: BoxFit.fitWidth,
@@ -43,17 +43,18 @@ class _InvertViewState extends State<InvertView> {
                 assetKey: 'shaders/invert.frag',
                 (context, shader, child) {
                   shader
-                    ..setFloat(0, image!.width.toDouble())
-                    ..setFloat(1, image!.height.toDouble())
-                    ..setImageSampler(0, image!);
+                    ..setFloat(0, image.width.toDouble())
+                    ..setFloat(1, image.height.toDouble())
+                    ..setImageSampler(0, image);
 
                   return CustomPaint(
-                    size: image!.size,
+                    size: image.size,
                     painter: ShaderPainter(shader),
                   );
                 },
               ),
             ),
           ),
-        );
+        ),
+      );
 }
