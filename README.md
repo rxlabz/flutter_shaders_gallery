@@ -3,7 +3,7 @@
 examples of simple Flutter shaders
 
 
-⚠️ for now you need to be on Flutter master channel ( or maybe beta IDK... ) and run on mobile or desktop
+⚠️ you need to upgrade to Flutter 3.17+ or be on Flutter master channel ( or maybe beta IDK... ) and run on mobile or desktop
 
 - uses [flutter_shaders](https://github.com/jonahwilliams/flutter_shaders)
 - intro to shaders : https://thebookofshaders.com
